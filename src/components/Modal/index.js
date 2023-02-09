@@ -1,13 +1,13 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import "./style.css";
 
 const Modal = (props) => {
-  if (!props.show) {
-    return null;
-  }
-
-  return (
-    <div onClick={props.onClose} className="modal">
+  return ReactDOM.createPortal(
+    <div
+      onClick={props.onClose}
+      className={`modal ${props.show ? "show" : ""}`}
+    >
       <div onClick={(e) => e.stopPropagation()} className="modal-content">
         <div className="modal-header">
           <h4 className="modal-tital">{props.title}</h4>
@@ -19,7 +19,8 @@ const Modal = (props) => {
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.getElementById("root")
   );
 };
 
