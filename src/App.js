@@ -6,7 +6,9 @@ function App() {
   return (
     <div className="App">
       <button onClick={() => setShow(true)}>Show Modal</button>
-      <Modal show={show} />
+      <Modal title="My Modal" onClose={() => setShow(false)} show={show}>
+        <p>This is modal body</p>
+      </Modal>
     </div>
   );
 }
